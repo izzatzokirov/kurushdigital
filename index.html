@@ -3,104 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kurush Digital | Инновации из сердца Согда</title>
+    <title>Kurush Digital | Создание цифрового будущего</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #6b03c9;
-            --accent: #00d4ff;
-            --dark: #0a0a0f;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --text: #ffffff;
+            --accent: #a04ef6;
+            --bg-dark: #08080c;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --text-main: #ffffff;
+            --text-dim: #b0b0b0;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: var(--dark); color: var(--text); overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-main); 
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-        .container { padding: 25px; max-width: 500px; margin: 0 auto; }
+        .container { padding: 20px; max-width: 600px; margin: 0 auto; }
 
         /* Шапка */
-        header { text-align: center; margin-top: 50px; }
+        header { text-align: center; padding: 60px 0 40px; }
         .logo-ring {
-            width: 120px; height: 120px; border: 3px solid var(--primary);
-            border-radius: 50%; margin: 0 auto 20px; display: flex;
+            width: 130px; height: 130px; border: 2px solid var(--primary);
+            border-radius: 50%; margin: 0 auto 25px; display: flex;
             align-items: center; justify-content: center;
-            box-shadow: 0 0 30px var(--primary);
-            animation: pulse 2s infinite;
+            box-shadow: 0 0 50px rgba(107, 3, 201, 0.3);
+            animation: pulse 3s infinite;
         }
-        @keyframes pulse { 0% { box-shadow: 0 0 10px var(--primary); } 50% { box-shadow: 0 0 40px var(--primary); } 100% { box-shadow: 0 0 10px var(--primary); } }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(1); opacity: 0.8; } }
 
-        h1 { font-size: 32px; background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        /* Раздел О НАС */
-        .about-section {
-            background: var(--card-bg); border-radius: 25px; padding: 25px;
-            margin: 30px 0; border: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
+        h1 { font-size: 36px; font-weight: 800; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 5px; }
+        .tagline { color: var(--accent); font-weight: 400; font-size: 14px; text-transform: uppercase; letter-spacing: 4px; }
+
+        /* О нас */
+        .section-box {
+            background: var(--card-bg); border-radius: 30px; padding: 30px;
+            margin: 30px 0; border: 1px solid rgba(255,255,255,0.08);
+            position: relative; overflow: hidden;
         }
-        .about-section h2 { color: var(--accent); margin-bottom: 15px; font-size: 22px; }
-        .about-section p { font-size: 15px; color: #ccc; line-height: 1.7; }
-        .location { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--primary); font-weight: bold; }
+        .section-box h2 { font-size: 22px; margin-bottom: 15px; color: var(--accent); }
+        .section-box p { font-size: 15px; color: var(--text-dim); }
 
-        /* Услуги */
-        .section-title { margin: 40px 0 20px; font-size: 20px; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .card {
-            background: var(--card-bg); padding: 20px; border-radius: 20px;
-            text-align: center; transition: 0.3s; border: 1px solid transparent;
+        /* Услуги - подробно */
+        .service-item { margin-bottom: 25px; text-align: left; }
+        .service-item i { color: var(--accent); font-size: 24px; margin-bottom: 10px; }
+        .service-item h4 { font-size: 18px; margin-bottom: 8px; }
+        .service-item p { font-size: 14px; color: var(--text-dim); }
+
+        /* Наши проекты */
+        .project-card {
+            background: linear-gradient(135deg, rgba(107, 3, 201, 0.1), rgba(255, 255, 255, 0.02));
+            border-radius: 20px; padding: 20px; margin-bottom: 15px;
+            border-left: 4px solid var(--primary);
         }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .card i { font-size: 28px; color: var(--primary); margin-bottom: 10px; }
-        .card h4 { font-size: 13px; }
+        .project-card h4 { color: #fff; margin-bottom: 5px; }
+        .project-card span { font-size: 12px; color: var(--accent); font-weight: bold; text-transform: uppercase; }
 
-        /* Контакты */
-        .contact-btn {
+        /* Кнопки связи */
+        .contact-group { margin-top: 40px; }
+        .btn {
             display: flex; align-items: center; justify-content: center;
-            width: 100%; padding: 18px; margin-top: 15px; border-radius: 20px;
-            text-decoration: none; color: white; font-weight: bold; font-size: 17px;
+            padding: 20px; border-radius: 20px; text-decoration: none;
+            color: white; font-weight: 700; font-size: 16px; margin-bottom: 15px;
             transition: 0.3s;
         }
-        .tg { background: linear-gradient(45deg, #0088cc, #00d4ff); }
-        .phone { background: linear-gradient(45deg, #25d366, #128c7e); }
+        .btn-tg { background: #229ED9; box-shadow: 0 10px 20px rgba(34, 158, 217, 0.2); }
+        .btn-phone { background: #34C759; box-shadow: 0 10px 20px rgba(52, 199, 89, 0.2); }
+        .btn i { margin-right: 12px; font-size: 20px; }
 
-        footer { text-align: center; margin-top: 60px; padding-bottom: 30px; font-size: 12px; opacity: 0.5; }
+        footer { text-align: center; padding: 40px 0; font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Декор */
+        .blob { position: fixed; width: 300px; height: 300px; background: var(--primary); filter: blur(150px); opacity: 0.15; z-index: -1; top: 10%; left: -100px; }
     </style>
 </head>
 <body>
 
+<div class="blob"></div>
+
 <div class="container">
     <header>
-        <div class="logo-ring"><i class="fas fa-microchip" style="font-size: 50px; color: var(--primary);"></i></div>
+        <div class="logo-ring"><i class="fas fa-code" style="font-size: 45px; color: #fff;"></i></div>
         <h1>Kurush Digital</h1>
-        <p style="color: var(--accent); letter-spacing: 3px;">PREMIUM SOFTWARE</p>
+        <p class="tagline">Технологии высшего уровня</p>
     </header>
 
-    <section class="about-section">
-        <h2>Кто мы такие?</h2>
+    <section class="section-box">
+        <h2>Почему мы?</h2>
         <p>
-            Мы — команда амбициозных разработчиков из <b>Согдийской области (г. Исфара)</b>, превращающая сложные технологии в простые решения для вашего бизнеса. 
-            <b>Kurush Digital</b> — это не просто код. Это цифровое искусство, созданное в самом сердце Таджикистана. 
-            Мы не просто делаем приложения — мы создаем инструменты, которые приносят вам прибыль и автоматизируют каждый ваш шаг.
+            Мы базируемся в <b>Исфаре</b>, но наши решения не имеют границ. <b>Kurush Digital</b> — это команда, которая превращает ваш бизнес в мощную цифровую машину. Мы верим, что технологии должны быть не только функциональными, но и эстетичными. Наша миссия — сделать так, чтобы ваш бизнес выделялся на фоне конкурентов и работал сам на себя.
         </p>
-        <span class="location"><i class="fas fa-map-marker-alt"></i> SOGD, TAJIKISTAN</span>
     </section>
 
-    <h3 class="section-title">Наши возможности</h3>
-    <div class="grid">
-        <div class="card"><i class="fas fa-utensils"></i><h4>Доставка еды</h4></div>
-        <div class="card"><i class="fas fa-shopping-cart"></i><h4>Учет магазинов</h4></div>
-        <div class="card"><i class="fas fa-mobile-alt"></i><h4>Mobile App</h4></div>
-        <div class="card"><i class="fas fa-robot"></i><h4>Smart Bots</h4></div>
-        <div class="card"><i class="fas fa-pen-nib"></i><h4>Logo Design</h4></div>
-        <div class="card"><i class="fas fa-chart-line"></i><h4>Автоматизация</h4></div>
+    <section class="section-box">
+        <h2>Что мы создаем?</h2>
+        
+        <div class="service-item">
+            <i class="fas fa-paint-brush"></i>
+            <h4>Уникальный брендинг и логотипы</h4>
+            <p>Логотип — это лицо вашей компании. Мы создаем визуальный стиль, который делает ваш бренд узнаваемым с первого взгляда и вызывает доверие у клиентов.</p>
+        </div>
+
+        <div class="service-item">
+            <i class="fas fa-calculator"></i>
+            <h4>Умная автоматизация учета</h4>
+            <p>Забудьте о тетрадках и сложных таблицах. Мы внедряем системы, которые делают ваш учет простым и прозрачным, позволяя контролировать продажи и остатки в один клик.</p>
+        </div>
+
+        <div class="service-item">
+            <i class="fas fa-mobile-alt"></i>
+            <h4>Мобильные приложения под ключ</h4>
+            <p>Ваш бизнес в кармане клиента. Разрабатываем быстрые и современные приложения для iOS и Android, от которых невозможно оторваться.</p>
+        </div>
+
+        <div class="service-item">
+            <i class="fas fa-utensils"></i>
+            <h4>Системы для ресторанов и доставки</h4>
+            <p>Полный цикл: от онлайн-меню до автоматического приема заказов курьерами. Ваш ресторан начнет работать быстрее и эффективнее.</p>
+        </div>
+
+        <div class="service-item">
+            <i class="fas fa-robot"></i>
+            <h4>Интеллектуальные Telegram-боты</h4>
+            <p>Боты, которые умеют всё: продавать, консультировать и записывать клиентов 24/7 без обеда и выходных.</p>
+        </div>
+    </section>
+
+    <section class="section-box">
+        <h2>Наши реализованные проекты</h2>
+        
+        <div class="project-card">
+            <span>Мобильное приложение</span>
+            <h4>Исфара FM — 93.9 FM</h4>
+            <p style="font-size: 13px;">Потоковое вещание радио, работа в фоне и интеграция с социальными сетями в одном приложении.</p>
+        </div>
+
+        <div class="project-card">
+            <span>Автоматизация</span>
+            <h4>Система «Маркет-Контроль»</h4>
+            <p style="font-size: 13px;">Профессиональное решение для автоматизации продуктовых магазинов Согдийской области.</p>
+        </div>
+
+        <div class="project-card">
+            <span>Бот-платформа</span>
+            <h4>Бот доставки «Fast-Food Isfara»</h4>
+            <p style="font-size: 13px;">Умный бот для приема заказов еды с автоматическим расчетом стоимости доставки по городу.</p>
+        </div>
+    </section>
+
+    <div class="contact-group">
+        <a href="https://t.me/kurushd_bot" class="btn btn-tg">
+            <i class="fab fa-telegram-plane"></i> Связаться в Telegram
+        </a>
+        <a href="tel:+992780650044" class="btn btn-phone">
+            <i class="fas fa-phone-alt"></i> Позвонить руководителю
+        </a>
     </div>
 
-    <h3 class="section-title">Связь с мастером</h3>
-    <a href="https://t.me/kurushd_bot" class="contact-btn tg"><i class="fab fa-telegram-plane" style="margin-right: 10px;"></i> Telegram Bot</a>
-    <a href="tel:+992780650044" class="contact-btn phone"><i class="fas fa-phone-alt" style="margin-right: 10px;"></i> +992 78 065 0044</a>
-
     <footer>
-        &copy; 2026 Kurush Digital. All Rights Reserved.
+        &copy; 2026 Разработка: Kurush Digital. Все права защищены.
     </footer>
 </div>
 
