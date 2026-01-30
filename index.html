@@ -3,250 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kurush Digital | Разработка будущего</title>
+    <title>Kurush Digital | Инновации из сердца Согда</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary: #6b03c9;
-            --accent: #a04ef6;
-            --dark: #0f0f1b;
+            --accent: #00d4ff;
+            --dark: #0a0a0f;
+            --card-bg: rgba(255, 255, 255, 0.05);
             --text: #ffffff;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--dark); color: var(--text); overflow-x: hidden; }
 
-        body {
-            background-color: var(--dark);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        .container { padding: 25px; max-width: 500px; margin: 0 auto; }
 
-        /* Анимированный фон */
-        .bg-glow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1a0b2e 0%, #0f0f1b 100%);
-            z-index: -1;
+        /* Шапка */
+        header { text-align: center; margin-top: 50px; }
+        .logo-ring {
+            width: 120px; height: 120px; border: 3px solid var(--primary);
+            border-radius: 50%; margin: 0 auto 20px; display: flex;
+            align-items: center; justify-content: center;
+            box-shadow: 0 0 30px var(--primary);
+            animation: pulse 2s infinite;
         }
+        @keyframes pulse { 0% { box-shadow: 0 0 10px var(--primary); } 50% { box-shadow: 0 0 40px var(--primary); } 100% { box-shadow: 0 0 10px var(--primary); } }
 
-        /* Контейнер */
-        .container {
-            padding: 20px;
-            max-width: 500px;
-            margin: 0 auto;
+        h1 { font-size: 32px; background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Раздел О НАС */
+        .about-section {
+            background: var(--card-bg); border-radius: 25px; padding: 25px;
+            margin: 30px 0; border: 1px solid rgba(255,255,255,0.1);
             text-align: center;
         }
+        .about-section h2 { color: var(--accent); margin-bottom: 15px; font-size: 22px; }
+        .about-section p { font-size: 15px; color: #ccc; line-height: 1.7; }
+        .location { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--primary); font-weight: bold; }
 
-        /* Профиль */
-        header {
-            margin-top: 40px;
-            margin-bottom: 30px;
+        /* Услуги */
+        .section-title { margin: 40px 0 20px; font-size: 20px; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .card {
+            background: var(--card-bg); padding: 20px; border-radius: 20px;
+            text-align: center; transition: 0.3s; border: 1px solid transparent;
         }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .card i { font-size: 28px; color: var(--primary); margin-bottom: 10px; }
+        .card h4 { font-size: 13px; }
 
-        .logo-box {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            border-radius: 25px;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            box-shadow: 0 10px 20px rgba(107, 3, 201, 0.4);
-        }
-
-        h1 {
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            background: linear-gradient(to right, #fff, var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subtitle {
-            font-size: 14px;
-            color: #b0b0b0;
-            margin-bottom: 20px;
-        }
-
-        /* Блок услуг */
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .service-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Контакты */
+        .contact-btn {
+            display: flex; align-items: center; justify-content: center;
+            width: 100%; padding: 18px; margin-top: 15px; border-radius: 20px;
+            text-decoration: none; color: white; font-weight: bold; font-size: 17px;
             transition: 0.3s;
         }
+        .tg { background: linear-gradient(45deg, #0088cc, #00d4ff); }
+        .phone { background: linear-gradient(45deg, #25d366, #128c7e); }
 
-        .service-card i {
-            color: var(--accent);
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
-
-        .service-card p {
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        /* Кнопки ссылок */
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-            border-radius: 18px;
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-tg { background: #229ED9; }
-        .btn-call { background: #34C759; }
-        .btn-work { background: var(--primary); }
-
-        .btn:active {
-            transform: scale(0.95);
-        }
-
-        .btn i {
-            margin-right: 10px;
-            font-size: 20px;
-        }
-
-        /* Текстовый блок */
-        .promo-text {
-            margin-top: 40px;
-            padding: 20px;
-            background: rgba(107, 3, 201, 0.1);
-            border-radius: 20px;
-            border: 1px dashed var(--primary);
-        }
-
-        .promo-text h3 {
-            margin-bottom: 10px;
-            color: var(--accent);
-        }
-
-        .promo-text p {
-            font-size: 14px;
-            color: #d0d0d0;
-        }
-
-        footer {
-            margin-top: 50px;
-            padding-bottom: 30px;
-            font-size: 12px;
-            color: #666;
-        }
-
-        /* Анимация появления */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate {
-            animation: fadeInUp 0.8s ease forwards;
-        }
+        footer { text-align: center; margin-top: 60px; padding-bottom: 30px; font-size: 12px; opacity: 0.5; }
     </style>
 </head>
 <body>
-    <div class="bg-glow"></div>
 
-    <div class="container">
-        <header class="animate">
-            <div class="logo-box">
-                <i class="fas fa-code"></i>
-            </div>
-            <h1>Kurush Digital</h1>
-            <p class="subtitle">Создаем цифровые шедевры</p>
-        </header>
+<div class="container">
+    <header>
+        <div class="logo-ring"><i class="fas fa-microchip" style="font-size: 50px; color: var(--primary);"></i></div>
+        <h1>Kurush Digital</h1>
+        <p style="color: var(--accent); letter-spacing: 3px;">PREMIUM SOFTWARE</p>
+    </header>
 
-        <div class="services-grid animate">
-            <div class="service-card">
-                <i class="fas fa-mobile-alt"></i>
-                <p>Мобильные приложения</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-robot"></i>
-                <p>Telegram боты</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-utensils"></i>
-                <p>Доставка еды</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-store"></i>
-                <p>Учет магазинов</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-paint-brush"></i>
-                <p>Логотипы и дизайн</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-globe"></i>
-                <p>Web-сайты</p>
-            </div>
-        </div>
+    <section class="about-section">
+        <h2>Кто мы такие?</h2>
+        <p>
+            Мы — команда амбициозных разработчиков из <b>Согдийской области (г. Исфара)</b>, превращающая сложные технологии в простые решения для вашего бизнеса. 
+            <b>Kurush Digital</b> — это не просто код. Это цифровое искусство, созданное в самом сердце Таджикистана. 
+            Мы не просто делаем приложения — мы создаем инструменты, которые приносят вам прибыль и автоматизируют каждый ваш шаг.
+        </p>
+        <span class="location"><i class="fas fa-map-marker-alt"></i> SOGD, TAJIKISTAN</span>
+    </section>
 
-        <div class="links animate">
-            <a href="https://t.me/kurushd_bot" class="btn btn-tg">
-                <i class="fab fa-telegram-plane"></i> Написать в Telegram
-            </a>
-            <a href="tel:780650044" class="btn btn-call">
-                <i class="fas fa-phone-alt"></i> Позвонить нам
-            </a>
-            <a href="#order" class="btn btn-work">
-                <i class="fas fa-rocket"></i> Заказать проект
-            </a>
-        </div>
-
-        <div class="promo-text animate">
-            <h3>Воплощаем любые идеи</h3>
-            <p>От автоматизации маленького магазина до сложных экосистем ресторанов и служб доставки. Мы делаем софт, который работает на ваш бизнес 24/7.</p>
-        </div>
-
-        <footer>
-            &copy; 2026 Kurush Digital. Все права защищены.
-        </footer>
+    <h3 class="section-title">Наши возможности</h3>
+    <div class="grid">
+        <div class="card"><i class="fas fa-utensils"></i><h4>Доставка еды</h4></div>
+        <div class="card"><i class="fas fa-shopping-cart"></i><h4>Учет магазинов</h4></div>
+        <div class="card"><i class="fas fa-mobile-alt"></i><h4>Mobile App</h4></div>
+        <div class="card"><i class="fas fa-robot"></i><h4>Smart Bots</h4></div>
+        <div class="card"><i class="fas fa-pen-nib"></i><h4>Logo Design</h4></div>
+        <div class="card"><i class="fas fa-chart-line"></i><h4>Автоматизация</h4></div>
     </div>
 
-    <script>
-        // Небольшая магия появления элементов при скролле
-        document.querySelectorAll('.animate').forEach((el, i) => {
-            el.style.animationDelay = `${i * 0.1}s`;
-        });
-    </script>
+    <h3 class="section-title">Связь с мастером</h3>
+    <a href="https://t.me/kurushd_bot" class="contact-btn tg"><i class="fab fa-telegram-plane" style="margin-right: 10px;"></i> Telegram Bot</a>
+    <a href="tel:+992780650044" class="contact-btn phone"><i class="fas fa-phone-alt" style="margin-right: 10px;"></i> +992 78 065 0044</a>
+
+    <footer>
+        &copy; 2026 Kurush Digital. All Rights Reserved.
+    </footer>
+</div>
+
 </body>
 </html>
