@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurush Digital - Разработка приложений и сайтов</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #6b03c9;
+            --secondary: #a707ed;
+            --accent: #FF6B35;
+            --dark: #0f172a;
+            --light: #f8fafc;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+            color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Шапка */
+        header {
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--accent), #ff8c42);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 20px;
+            opacity: 0.9;
+            color: #94a3b8;
+        }
+        
+        /* Основное содержание */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #cbd5e1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #cbd5e1;
+        }
+        
+        .highlight {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        /* Карточки проектов */
+        .projects {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #fff;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.1);
+        }
+        
+        .project-icon {
+            font-size: 40px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .project-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .project-desc {
+            color: #94a3b8;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, var(--accent), #ff8c42);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .project-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+        }
+        
+        /* Контакты */
+        .contacts {
+            padding: 80px 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 30px;
+            margin: 60px 0;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        /* Футер */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .logo { font-size: 36px; }
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 18px; }
+            .section-title { font-size: 28px; }
+            .project-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">KURUSH DIGITAL</div>
+            <p class="tagline">Разработка мобильных приложений и цифровых решений</p>
+        </header>
+        
+        <section class="hero">
+            <h1>Превращаю идеи в цифровую реальность</h1>
+            <p>Специализируюсь на создании <span class="highlight">Android приложений</span>, веб-сайтов и IT-решений для бизнеса. Каждый проект — это уникальная история успеха.</p>
+        </section>
+        
+        <section class="projects">
+            <h2 class="section-title">Мои проекты</h2>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-radio"></i>
+                    </div>
+                    <h3 class="project-title">Isfara FM Radio</h3>
+                    <p class="project-desc">Официальное приложение радиостанции Isfara FM (Исфара, Таджикистан). Прямой эфир 24/7, расписание передач, новости города. Работает в фоновом режиме с уведомлениями.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.isfarafm.android" class="project-link" target="_blank">
+                        <i class="fab fa-google-play"></i>
+                        Смотреть в Google Play
+                    </a>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="project-title">Android Приложения</h3>
+                    <p class="project-desc">Разработка нативных Android приложений на Kotlin/Java. От идеи до публикации в Google Play. Интеграция с API, базами данных, push-уведомлениями.</p>
+                    <a href="#contacts" class="project-link">
+                        <i class="fas fa-code"></i>
+                        Обсудить проект
+                    </a>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="project-title">Веб-Разработка</h3>
+                    <p class="project-desc">Современные адаптивные сайты, веб-приложения, корпоративные порталы. HTML5, CSS3, JavaScript, React. Быстрая загрузка и идеальная работа на всех устройствах.</p>
+                    <a href="#contacts" class="project-link">
+                        <i class="fas fa-laptop-code"></i>
+                        Заказать сайт
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="contacts" id="contacts">
+            <h2 class="section-title">Свяжитесь со мной</h2>
+            <p>Готов обсудить ваш проект или ответить на вопросы</p>
+            
+            <div class="contact-links">
+                <a href="https://t.me/KurushD_bot" class="contact-btn" target="_blank">
+                    <i class="fab fa-telegram"></i>
+                    Telegram бот
+                </a>
+                <a href="mailto:hello@kurushdigital.one" class="contact-btn">
+                    <i class="fas fa-envelope"></i>
+                    Email
+                </a>
+                <a href="https://github.com/izzatzokirov" class="contact-btn" target="_blank">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+            </div>
+        </section>
+        
+        <footer>
+            <p>© 2024 Kurush Digital. Все права защищены.</p>
+            <p style="margin-top: 10px; font-size: 12px; opacity: 0.7;">Домен: kurushdigital.one</p>
+        </footer>
+    </div>
+
+    <script>
+        // Плавная прокрутка для ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Анимация при прокрутке
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Наблюдаем за карточками проектов
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
