@@ -14,6 +14,8 @@
             --card-bg: rgba(255, 255, 255, 0.04);
             --text-main: #ffffff;
             --text-dim: #b0b0b0;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,70 +23,321 @@
             background-color: var(--bg-dark); 
             color: var(--text-main); 
             font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(107, 3, 201, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(160, 78, 246, 0.05) 0%, transparent 20%);
         }
 
         .container { padding: 20px; max-width: 600px; margin: 0 auto; }
 
+        /* Анимация появления */
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-box, .project-card, .service-item {
+            animation: fadeSlideUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        .section-box { animation-delay: 0.1s; }
+        .service-item:nth-child(1) { animation-delay: 0.2s; }
+        .service-item:nth-child(2) { animation-delay: 0.3s; }
+        .service-item:nth-child(3) { animation-delay: 0.4s; }
+        .service-item:nth-child(4) { animation-delay: 0.5s; }
+        .service-item:nth-child(5) { animation-delay: 0.6s; }
+        .project-card:nth-child(1) { animation-delay: 0.2s; }
+        .project-card:nth-child(2) { animation-delay: 0.3s; }
+        .project-card:nth-child(3) { animation-delay: 0.4s; }
+        .project-card:nth-child(4) { animation-delay: 0.5s; }
+        .project-card:nth-child(5) { animation-delay: 0.6s; }
+
         /* Шапка */
-        header { text-align: center; padding: 60px 0 40px; }
+        header { 
+            text-align: center; 
+            padding: 60px 0 40px; 
+            animation: fadeSlideUp 1s ease-out;
+        }
         .logo-ring {
-            width: 130px; height: 130px; border: 2px solid var(--primary);
-            border-radius: 50%; margin: 0 auto 25px; display: flex;
-            align-items: center; justify-content: center;
-            box-shadow: 0 0 50px rgba(107, 3, 201, 0.3);
+            width: 130px; height: 130px; 
+            border: 2px solid var(--primary);
+            border-radius: 50%; 
+            margin: 0 auto 25px; 
+            display: flex;
+            align-items: center; 
+            justify-content: center;
+            background: rgba(107, 3, 201, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 0 50px rgba(107, 3, 201, 0.3),
+                inset 0 0 30px rgba(255, 255, 255, 0.05);
             animation: pulse 3s infinite;
         }
-        @keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(1); opacity: 0.8; } }
+        @keyframes pulse { 
+            0% { transform: scale(1); opacity: 0.8; } 
+            50% { transform: scale(1.05); opacity: 1; } 
+            100% { transform: scale(1); opacity: 0.8; } 
+        }
 
-        h1 { font-size: 36px; font-weight: 800; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 5px; }
-        .tagline { color: var(--accent); font-weight: 400; font-size: 14px; text-transform: uppercase; letter-spacing: 4px; }
+        h1 { 
+            font-size: 36px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: -1px; 
+            margin-bottom: 5px;
+            background: linear-gradient(90deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .tagline { 
+            color: var(--accent); 
+            font-weight: 400; 
+            font-size: 14px; 
+            text-transform: uppercase; 
+            letter-spacing: 4px;
+            margin-top: 10px;
+        }
+
+        /* Эффект стекла */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
 
         /* О нас */
         .section-box {
-            background: var(--card-bg); border-radius: 30px; padding: 30px;
-            margin: 30px 0; border: 1px solid rgba(255,255,255,0.08);
-            position: relative; overflow: hidden;
+            background: var(--card-bg); 
+            border-radius: 30px; 
+            padding: 35px;
+            margin: 30px 0; 
+            border: 1px solid rgba(255,255,255,0.08);
+            position: relative; 
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .section-box h2 { font-size: 22px; margin-bottom: 15px; color: var(--accent); }
-        .section-box p { font-size: 15px; color: var(--text-dim); }
+        .section-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(107, 3, 201, 0.15);
+        }
+        .section-box h2 { 
+            font-size: 24px; 
+            margin-bottom: 20px; 
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-box h2 i { font-size: 20px; }
+        .section-box p { 
+            font-size: 15px; 
+            color: var(--text-dim);
+            margin-bottom: 15px;
+        }
 
-        /* Услуги - подробно */
-        .service-item { margin-bottom: 25px; text-align: left; }
-        .service-item i { color: var(--accent); font-size: 24px; margin-bottom: 10px; }
-        .service-item h4 { font-size: 18px; margin-bottom: 8px; }
-        .service-item p { font-size: 14px; color: var(--text-dim); }
+        /* Услуги */
+        .service-item { 
+            margin-bottom: 30px; 
+            text-align: left;
+            padding: 20px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        .service-item:hover {
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateX(10px);
+        }
+        .service-item i { 
+            color: var(--accent); 
+            font-size: 28px; 
+            margin-bottom: 15px;
+            background: rgba(160, 78, 246, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .service-item h4 { 
+            font-size: 18px; 
+            margin-bottom: 10px; 
+            color: #fff;
+        }
+        .service-item p { 
+            font-size: 14px; 
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
 
-        /* Наши проекты */
+        /* Наши проекты - новый стиль стекла */
         .project-card {
-            background: linear-gradient(135deg, rgba(107, 3, 201, 0.1), rgba(255, 255, 255, 0.02));
-            border-radius: 20px; padding: 20px; margin-bottom: 15px;
-            border-left: 4px solid var(--primary);
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 22px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            position: relative;
+            overflow: hidden;
         }
-        .project-card h4 { color: #fff; margin-bottom: 5px; }
-        .project-card span { font-size: 12px; color: var(--accent); font-weight: bold; text-transform: uppercase; }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(160, 78, 246, 0.3);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 40px rgba(107, 3, 201, 0.1);
+        }
+        .project-card h4 { 
+            color: #fff; 
+            margin-bottom: 8px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .project-card h4 i {
+            color: var(--accent);
+            font-size: 16px;
+        }
+        .project-card span { 
+            font-size: 11px; 
+            color: var(--accent); 
+            font-weight: bold; 
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            background: rgba(160, 78, 246, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .project-card p { 
+            font-size: 13px; 
+            color: var(--text-dim);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .project-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s;
+        }
+        .project-link:hover {
+            gap: 12px;
+        }
 
         /* Кнопки связи */
         .contact-group { margin-top: 40px; }
         .btn {
-            display: flex; align-items: center; justify-content: center;
-            padding: 20px; border-radius: 20px; text-decoration: none;
-            color: white; font-weight: 700; font-size: 16px; margin-bottom: 15px;
-            transition: 0.3s;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            padding: 22px; 
+            border-radius: 20px; 
+            text-decoration: none;
+            color: white; 
+            font-weight: 700; 
+            font-size: 16px; 
+            margin-bottom: 15px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            border: none;
         }
-        .btn-tg { background: #229ED9; box-shadow: 0 10px 20px rgba(34, 158, 217, 0.2); }
-        .btn-phone { background: #34C759; box-shadow: 0 10px 20px rgba(52, 199, 89, 0.2); }
-        .btn i { margin-right: 12px; font-size: 20px; }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+        .btn:hover::before {
+            left: 100%;
+        }
+        .btn-tg { 
+            background: #229ED9; 
+            box-shadow: 0 10px 30px rgba(34, 158, 217, 0.3); 
+        }
+        .btn-tg:hover { 
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(34, 158, 217, 0.4);
+        }
+        .btn-phone { 
+            background: #34C759; 
+            box-shadow: 0 10px 30px rgba(52, 199, 89, 0.3); 
+        }
+        .btn-phone:hover { 
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(52, 199, 89, 0.4);
+        }
+        .btn i { margin-right: 15px; font-size: 20px; }
 
-        footer { text-align: center; padding: 40px 0; font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 2px; }
+        footer { 
+            text-align: center; 
+            padding: 40px 0; 
+            font-size: 11px; 
+            color: #666; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            margin-top: 20px;
+        }
 
         /* Декор */
-        .blob { position: fixed; width: 300px; height: 300px; background: var(--primary); filter: blur(150px); opacity: 0.15; z-index: -1; top: 10%; left: -100px; }
+        .blob { 
+            position: fixed; 
+            width: 300px; 
+            height: 300px; 
+            background: var(--primary); 
+            filter: blur(150px); 
+            opacity: 0.1; 
+            z-index: -1; 
+            top: 10%; 
+            left: -100px;
+            animation: float 20s infinite ease-in-out;
+        }
+        .blob:nth-child(2) {
+            top: 70%;
+            left: 70%;
+            background: var(--accent);
+            animation-delay: -10s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-30px, 40px) scale(0.9); }
+        }
     </style>
 </head>
 <body>
 
+<div class="blob"></div>
 <div class="blob"></div>
 
 <div class="container">
@@ -94,15 +347,15 @@
         <p class="tagline">Технологии высшего уровня</p>
     </header>
 
-    <section class="section-box">
-        <h2>Почему мы?</h2>
-        <p>
-            Мы базируемся в <b>Исфаре</b>, но наши решения не имеют границ. <b>Kurush Digital</b> — это команда, которая превращает ваш бизнес в мощную цифровую машину. Мы верим, что технологии должны быть не только функциональными, но и эстетичными. Наша миссия — сделать так, чтобы ваш бизнес выделялся на фоне конкурентов и работал сам на себя.
-        </p>
+    <section class="section-box glass-card">
+        <h2><i class="fas fa-star"></i> Почему мы?</h2>
+        <p><strong>Kurush Digital — это мост между культурами и технологиями.</strong></p>
+        <p>Наша студия родилась в Таджикистане, а наш опыт формируется на международных рынках. Мы создаём решения, которые работают глобально, сохраняя глубокое понимание локальных особенностей бизнеса.</p>
+        <p>От Исфары до Санкт-Петербурга — мы строим не просто код, а цифровые системы, которые становятся основой для роста и автоматизации. Наш стиль — это минимализм, тёмная эстетика и бескомпромиссное внимание к деталям.</p>
     </section>
 
     <section class="section-box">
-        <h2>Что мы создаем?</h2>
+        <h2><i class="fas fa-cogs"></i> Что мы создаем?</h2>
         
         <div class="service-item">
             <i class="fas fa-paint-brush"></i>
@@ -136,24 +389,39 @@
     </section>
 
     <section class="section-box">
-        <h2>Наши реализованные проекты</h2>
+        <h2><i class="fas fa-rocket"></i> Наши реализованные проекты</h2>
         
         <div class="project-card">
-            <span>Мобильное приложение</span>
-            <h4>Исфара FM — 93.9 FM</h4>
-            <p style="font-size: 13px;">Потоковое вещание радио, работа в фоне и интеграция с социальными сетями в одном приложении.</p>
+            <span>Флагманский проект</span>
+            <h4><i class="fas fa-broadcast-tower"></i> Исфара FM — 93.9 FM</h4>
+            <p>Потоковое вещание радио, работа в фоне и интеграция с социальными сетями в одном приложении. Современный дизайн и безупречная техническая реализация.</p>
+            <a href="https://izzatzokirov.github.io/isfarafm-radio/" target="_blank" class="project-link">Узнать больше <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="project-card">
+            <span>Интернет-магазин</span>
+            <h4><i class="fas fa-shopping-cart"></i> Abricoss.ru</h4>
+            <p>Премиальные орехи и сухофрукты. Полный цикл разработки: от дизайна до интеграции платежей и систем аналитики. Проект стабильно работает на рынке.</p>
+            <a href="https://abricoss.ru" target="_blank" class="project-link">Перейти на сайт <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="project-card">
+            <span>Интернет-магазин</span>
+            <h4><i class="fas fa-store"></i> Frutoss.ru</h4>
+            <p>Ещё один успешный онлайн-магазин в нише орехов и деликатесов. Современный дизайн, упор на удобство покупателя и отлаженная логистика.</p>
+            <a href="https://frutoss.ru" target="_blank" class="project-link">Перейти на сайт <i class="fas fa-arrow-right"></i></a>
         </div>
 
         <div class="project-card">
             <span>Автоматизация</span>
-            <h4>Система «Маркет-Контроль»</h4>
-            <p style="font-size: 13px;">Профессиональное решение для автоматизации продуктовых магазинов Согдийской области.</p>
+            <h4><i class="fas fa-chart-line"></i> Система «Маркет-Контроль»</h4>
+            <p>Профессиональное решение для автоматизации продуктовых магазинов Согдийской области. Учёт, аналитика и контроль в реальном времени.</p>
         </div>
 
         <div class="project-card">
             <span>Бот-платформа</span>
-            <h4>Бот доставки «Fast-Food»</h4>
-            <p style="font-size: 13px;">Умный бот для приема заказов еды с автоматическим расчетом стоимости доставки по городу.</p>
+            <h4><i class="fas fa-robot"></i> Бот доставки «Fast-Food»</h4>
+            <p>Умный бот для приема заказов еды с автоматическим расчетом стоимости доставки по городу. Работает 24/7 без перерывов.</p>
         </div>
     </section>
 
@@ -170,6 +438,31 @@
         &copy; 2026 Разработка: Kurush Digital. Все права защищены.
     </footer>
 </div>
+
+<script>
+    // Плавное появление при скролле
+    document.addEventListener('DOMContentLoaded', function() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Наблюдаем за всеми анимируемыми элементами
+        document.querySelectorAll('.section-box, .project-card, .service-item').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    });
+</script>
 
 </body>
 </html>
