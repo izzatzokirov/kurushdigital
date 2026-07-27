@@ -66,6 +66,7 @@
             border-radius: 50%;
             filter: blur(80px);
             opacity: 0.3;
+            will-change: transform;
             animation: floatOrb 25s ease-in-out infinite alternate;
         }
 
@@ -92,16 +93,23 @@
             background: var(--green);
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
             opacity: 0.15;
             animation-delay: -10s;
         }
 
         @keyframes floatOrb {
-            0% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(60px, -80px) scale(1.1); }
-            66% { transform: translate(-40px, 60px) scale(0.9); }
-            100% { transform: translate(30px, -30px) scale(1.05); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(60px, -80px) scale(1.1);
+            }
+            66% {
+                transform: translate(-40px, 60px) scale(0.9);
+            }
+            100% {
+                transform: translate(30px, -30px) scale(1.05);
+            }
         }
 
         /* ===== ШАПКА ===== */
@@ -707,7 +715,7 @@
                     для вашего бизнеса
                 </h1>
                 <p>
-                    От идеи до автоматизации. Создаём сайты, приложения, ботов и системы, которые работают на результат.
+                    От идеи до автоматизации. Создаём сайты, приложения, боты и системы, которые работают на результат.
                 </p>
                 <div style="display: flex; gap: 16px; flex-wrap: wrap;">
                     <a href="https://t.me/kurush_digital" target="_blank" class="btn-primary">
@@ -829,8 +837,8 @@
                             <span>React Native</span>
                         </div>
                         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-                            <a href="https://izzatzokirov.github.io/isfarafm-radio/" target="_blank" class="card-link green">🌐 Открыть сайт</a>
-                            <a href="https://play.google.com/store/apps/details?id=com.kurushdigital.isfsrafm" target="_blank" class="card-link">📱 Скачать в Google Play</a>
+                            <a href="#" class="card-link green">🌐 Открыть сайт</a>
+                            <a href="#" class="card-link">📱 Скачать в Google Play</a>
                         </div>
                     </div>
                 </div>
@@ -842,7 +850,7 @@
                         <h3>Isfara FM</h3>
                         <p>Радио приложение с потоковым вещанием и интеграцией социальных сетей.</p>
                         <div class="tech"><span>HTML/CSS</span><span>JavaScript</span><span>Web Audio</span></div>
-                        <a href="https://izzatzokirov.github.io/isfarafm-radio/" target="_blank" class="card-link">Подробнее →</a>
+                        <a href="#" class="card-link">Подробнее →</a>
                     </div>
                 </div>
 
@@ -853,7 +861,7 @@
                         <h3>Abricoss.ru</h3>
                         <p>Интернет-магазин премиальных орехов и сухофруктов с современным дизайном.</p>
                         <div class="tech"><span>React</span><span>Node.js</span><span>Stripe</span></div>
-                        <a href="https://abricoss.ru" target="_blank" class="card-link">Перейти →</a>
+                        <a href="#" class="card-link">Перейти →</a>
                     </div>
                 </div>
 
@@ -864,7 +872,7 @@
                         <h3>Frutoss.ru</h3>
                         <p>Онлайн-магазин с современным дизайном и продуманной логистикой.</p>
                         <div class="tech"><span>Next.js</span><span>MongoDB</span><span>PayPal</span></div>
-                        <a href="https://frutoss.ru" target="_blank" class="card-link">Перейти →</a>
+                        <a href="#" class="card-link">Перейти →</a>
                     </div>
                 </div>
 
